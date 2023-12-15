@@ -1,0 +1,30 @@
+{
+  "name": "automation-test",
+  "version": "1.0.0",
+  "description": "e2e basis automation project",
+  "main": "index.js",
+  "scripts": {
+    "cy:silent-prod": "npx cypress run --browser chrome",
+    "cy:editor-prod": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.github.de/Gardosen/automation-test.git"
+  },
+  "author": "Marco Bierbach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://git.github.de/Gardosen/automation-test/issues"
+  },
+  "homepage": "https://git.github.de/Gardosen/automation-test#readme",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "18.0.6",
+    "@cypress/browserify-preprocessor": "3.0.2",
+    "@cypress/xpath": "2.0.3",
+    "cypress": "13.3.1",
+    "cypress-plugin-tab": "1.0.5",
+    "cypress-real-events": "1.10.3",
+    "prettier-json": "1.0.0",
+    "typescript": "5.1.6"
+  }
+}
