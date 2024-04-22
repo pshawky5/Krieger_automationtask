@@ -2,7 +2,7 @@
 const timestamp = new Date().toISOString().replace(/:/g, '-').replace(/\..+/, '');
 
 
-describe('Verify the availability and clickability of Drop Down Menu buttons', () => {
+describe('Verify the availability and clickability of Dropdown Menu buttons', () => {
   it('Checks availability and clickability of buttons', () => {
     // Visit the website
     cy.visit('https://www.kriegerdigital.de/digitale-krieger/');
@@ -32,7 +32,7 @@ describe('Verify the availability and clickability of Drop Down Menu buttons', (
       cy.log('Language button is present and clicked');
       cy.screenshot(`Language_switcher_${timestamp}`)
 
-      cy.log('End of Test Case Drop Down Menu buttons')
+      cy.log('End of Test Case Dropdown Menu buttons')
     
   });
 });
