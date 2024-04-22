@@ -59,6 +59,12 @@ It will update Node and NPM to the latest version.
 `npm install cypress --save-dev`
 
 #### Run the test automation
+Navigate to the test cases folder e2e 
+/automation-test/cypress/e2e/cypress/e2e
+
+Run from cypress lanucher
+`npx cypress open`
+
 
 run in headles mode
 ```bash
