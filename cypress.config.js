@@ -45,5 +45,13 @@ module.exports = defineConfig({
     // Configure retry attempts for `cypress open`
     // Default is 0
     openMode: 0
+  },
+  // Mochawesome reporter configuration
+  reporter: "mochawesome",
+  reporterOptions: {
+    reportDir: "cypress/reports",
+    overwrite: false,
+    html: true,
+    json: false,
   }
 });
