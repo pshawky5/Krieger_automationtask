@@ -62,11 +62,12 @@ check the installed version
 ```
 npx cypress --version
 
-``
+```
 
 #### Run the test automation
+
 Navigate to the test cases folder e2e 
-/automation-test/cypress/e2e/cypress/e2e
+/automation-test/cypress/e2e
 
 Run from cypress lanucher
 `npx cypress open`
@@ -82,11 +83,16 @@ run in cypress browser mode
 npm run cy:editor-prod
 ````
 Installing report libarary mochawesome
-```npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+
+```
+npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+
 ```
  
 check installation by running a test using mochawesome reporter via this command
+
 ```
 npx cypress run --reporter mochawesome
-``
+
+```
 
