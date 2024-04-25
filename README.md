@@ -26,6 +26,8 @@ Installion of Node.js packages
 - clone the github repo `git clone URL`
 - navigate to the cloned directory `cd automation test`
 
+**If npm is not installed then follow those steps**
+
 - Install Node.js and NPM using homebrew
 Step 1: Run the given command in your terminal.
 
@@ -55,8 +57,20 @@ It will update Node and NPM to the latest version.
 - Install the npm 
 `npm install`
 
-- Install Cypress
+**If npm already installed**
+Then navigate to the project repo and run 
+
+```npm init -y
+```
+
+- Install Cypress as a dev dependency
 `npm install cypress --save-dev`
+
+
+- Open cypress
+```
+npx cypress open
+```
 
 check the installed version 
 ```
@@ -72,11 +86,15 @@ Navigate to the test cases folder e2e
 Run from cypress lanucher
 `npx cypress open`
 
-
 run in headles mode
 ```bash
 npm run cy:silent-prod
 ```
+run in headles mode with verbose mode and generate report
+```
+npx cypress run --spec cypress/e2e/integration/(replace with your testcase).feature --env verbose=truenpx cypress run --reporter mochawesome
+```
+*If needed to run in browser mode (Head) then add `--headed` to the previous command*
 
 run in cypress browser mode
 ````bash
@@ -95,4 +113,34 @@ check installation by running a test using mochawesome reporter via this command
 npx cypress run --reporter mochawesome
 
 ```
+Modify the cypress.config.js file
 
+```
+{
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/reports", // Specify the directory where reports will be generated
+    "overwrite": false,
+    "html": true,
+    "json": false
+  }
+} 
+```
+Install Cypress Cucumber Preprocessor that allows you to write your tests in Gherkin syntax. 
+
+
+``` 
+npm install cypress-cucumber-preprocessor --save-dev 
+```
+Configure Cypress to Use Cucumber Preprocessor
+Modify the cypress/plugins/index.js file to configure Cypress to use the Cucumber preprocessor 
+
+```
+const cucumber = require('cypress-cucumber-preprocessor').default;
+
+module.exports = (on, config) => {
+  on('file:preprocessor', cucumber());
+};
+```
+
+npm install @badeball/cypress-cucumber-preprocessor
