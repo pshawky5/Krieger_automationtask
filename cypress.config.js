@@ -1,14 +1,17 @@
 const { defineConfig } = require("cypress");
-const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
+const addCucumberPreprocessorPlugin =
+    require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
 const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
 
 module.exports = defineConfig({
   viewportWidth: 1920,
   viewportHeight: 1080,
-  e2e: {// This is required for the preprocessor to be able to generate JSON reports after each run
-    setupNodeEvents: async (on, config) => {
+  e2e: {
+    async setupNodeEvents(on, config) {
       on('before:browser:launch', (browser = {}, launchOptions) => {
-        console.log(launchOptions.args); // Print all current args
+        // `args` is an array of all the arguments that will
+        // be passed to browsers when it launches
+        console.log(launchOptions.args) // print all current args
         if (browser.family === 'chromium' && browser.name !== 'electron') {
           console.log('Adding Chrome flag: --disable-dev-shm-usage');
           launchOptions.args.push('--disable-dev-shm-usage');
@@ -24,12 +27,7 @@ module.exports = defineConfig({
     specPattern: [
       "cypress/e2e/**/*.feature"
     ],
-    stepDefinitions: 'cypress/e2e/support/step_definitions/'//step_definitions.js' // Add supportFile for e2e testing type
-  },
-  component: {
-    specPattern: [
-      "cypress/component/**/*.feature"
-    ],
+
   },
   defaultCommandTimeout: 25000,
   animationDistanceThreshold: 1,
@@ -48,12 +46,16 @@ module.exports = defineConfig({
     // Default is 0
     openMode: 0
   },
-  // Mochawesome reporter configuration
+    // Mochawesome reporter configuration
   reporter: "mochawesome",
   reporterOptions: {
     reportDir: "cypress/reports",
     overwrite: false,
     html: true,
     json: false,
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/support/step_definitions/kriegerdigital.page.steps.js"
   }
 });

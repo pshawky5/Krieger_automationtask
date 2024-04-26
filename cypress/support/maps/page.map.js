@@ -9,11 +9,13 @@ import {WILD_CARDS} from '../constants.js';
 import WildCard from '../objects/wildcard.js';
 
 const GooglePage = require("../pages/google.page");
+const Kriegerdigital = require("../pages/kriegerdigital.page.js"); 
 
 cy.pageMap = {};
 
 const PAGEMAP = {
-    'google page': GooglePage
+    'google page': GooglePage,
+    'kriegerdigital page': Kriegerdigital
 }
 
 cy.pageMap.getPageByDescription = (pageDescription) => {
@@ -24,7 +26,7 @@ cy.pageMap.getPageByDescription = (pageDescription) => {
 }
 
 cy.pageMap.getPageUrl = (pageDescription) => {
-    let pageUrl = cy.pageMap.getPageByDescription(pageDescription)?.path;
+    let pageUrl = cy.pageMap.getPageByDescription(pageDescription)?.path();  //Update the function calls inside getPageUrl method to match the correct structure of the Kriegerdigital page object.
     if(pageUrl === undefined)
         return null;
 
@@ -58,5 +60,5 @@ cy.pageMap.replaceWildCards = (text, wildCards ) => {
 }
 
 cy.pageMap.getPageRegExp = (pageDescription) => {
-    return cy.pageMap.getPageByDescription(pageDescription).regexp;
+    return cy.pageMap.getPageByDescription(pageDescription).regexp();//Update the function calls inside getPageRegExp method to match the correct structure of the Kriegerdigital page object.
 }
