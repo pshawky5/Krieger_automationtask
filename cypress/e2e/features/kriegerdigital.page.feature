@@ -2,7 +2,7 @@ Feature: Krieger Digital website
 
 @TestCase_1
 Scenario: Check availability and clickability of Dropdown menu buttons
-    Given I am on the "Kriegerdigital.de" website
+    Given I am on the "Kriegerdigital" website
     When I click on the toggle button to expand the menu
     Then I should see and click the "Digital Hub" button
     And I should see and click the "Deine Karriere" button
